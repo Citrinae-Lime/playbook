@@ -1,0 +1,83 @@
+name: Archive and Upload
+
+on: [workflow_dispatch,push]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Validate YAML files
+        run: 'yamllint -d "{extends: relaxed, rules: {empty-lines: disable, line-length: disable, new-line-at-end-of-file: disable, trailing-spaces: disable}}" src/Configuration/.'
+
+  build:
+    needs: validate
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Update version
+        id: version
+        run: |
+          $version = Get-Date -Format "yy.MM"
+          $filename = "Revi-PB-$version-$($env:GITHUB_SHA.Substring(0, 8)).apbx"
+          $playbookConfPath = "src\playbook.conf"
+          $finalizeCMDPath = "src\Executables\FINALIZE.cmd"
+
+          echo ("FILENAME=" + $filename) >> $env:GITHUB_ENV
+
+          (Get-Content -Path $playbookConfPath) -replace '<Version>.*</Version>', "<Version>$version</Version>" | Set-Content -Path $playbookConfPath
+
+          (Get-Content -Path $finalizeCMDPath) -replace 'set version=.+', "set version=$version" | Set-Content -Path $finalizeCMDPath
+        shell: pwsh
+
+      #   # Credits to echnobas, Atlas and all the contributors.
+      # - name: Clone sxsc
+      #   uses: actions/checkout@v4
+      #   with:
+      #     show-progress: false
+      #     repository: "Atlas-OS/sxsc"
+      #     path: "sxsc-src"
+
+      # - name: Build cab
+      #   working-directory: sxsc-src
+      #   run: |
+      #     pip install -r requirements.txt | Out-Null
+      #     $systemPackages = "..\src\Executables\CAB\" 
+
+      #     foreach ($file in Get-ChildItem -Path $systemPackages -Recurse -File -Filter "*.yaml") {
+      #       Copy-Item -Path $file.FullName -Destination "cfg.yaml" -Force | Out-Null
+      #       python sxsc.py
+      #       if ($LASTEXITCODE -ne 0) { exit 1 }
+      #       .\build.bat
+      #       Move-Item -Path *.cab -Destination "..\src\Executables\CAB" -Force | Out-Null
+      #       .\clean.bat
+      #     }
+
+      - name: Archive content
+        run: |
+          7z a -pmalte -mhe=on ${{ env.FILENAME }} ./src/*
+
+      - name: Generate SHA256
+        run: |
+          $hash = (Get-FileHash -Algorithm SHA256 -Path ${{ env.FILENAME }}).Hash
+          # echo ("HASH=" + $hash) >> $env:GITHUB_ENV
+          echo "SHA-256: $hash" >> $env:GITHUB_STEP_SUMMARY
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: ${{ env.FILENAME }}
+          name: playbook
+          if-no-files-found: error
+          retention-days: 15
+          compression-level: 0
