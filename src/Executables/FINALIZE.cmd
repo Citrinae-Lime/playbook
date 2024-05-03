@@ -1,4 +1,4 @@
-@echo off
+﻿@echo off
 set version=1.0
 for /f "tokens=2 delims==" %%i in ('wmic os get BuildNumber /value ^| find "="') do set "build=%%i"
 if %build% gtr 19045 ( set "w11=true" )
@@ -19,15 +19,15 @@ rmdir /s /q "%ProgramW6432%\\PCHealthCheck" >NUL 2>nul
 "%ProgramFiles(x86)%\WindowsInstallationAssistant\Windows10UpgraderApp.exe" /SunValley /ForceUninstall >NUL 2>nul
 rmdir /s /q "%ProgramFiles(x86)%\WindowsInstallationAssistant" >NUL 2>nul
 
-if not defined w11 (
-	bcdedit /set description "ReviOS 10 %version%" >NUL 2>nul
-  reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model"  /t REG_SZ /d "ReviOS 10 %version%" /f >NUL 2>nul
-  reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "RegisteredOrganization" /t REG_SZ /d "ReviOS 10 %version%" /f >NUL 2>nul
-) else (
-	bcdedit /set description "ReviOS 11 %version%" >NUL 2>nul
-  reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model"  /t REG_SZ /d "ReviOS 11 %version%" /f >NUL 2>nul
-  reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "RegisteredOrganization" /t REG_SZ /d "ReviOS 11 %version%" /f >NUL 2>nul
-)
+rem if not defined w11 (
+rem 	bcdedit /set description "ReviOS 10 %version%" >NUL 2>nul
+rem   reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model"  /t REG_SZ /d "ReviOS 10 %version%" /f >NUL 2>nul
+rem   reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "RegisteredOrganization" /t REG_SZ /d "ReviOS 10 %version%" /f >NUL 2>nul
+rem ) else (
+rem 	bcdedit /set description "ReviOS 11 %version%" >NUL 2>nul
+rem   reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model"  /t REG_SZ /d "ReviOS 11 %version%" /f >NUL 2>nul
+rem   reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "RegisteredOrganization" /t REG_SZ /d "ReviOS 11 %version%" /f >NUL 2>nul
+rem )
 
 @REM PowerShell -NonInteractive -NoLogo -NoP -C "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod" >NUL 2>nul
 
@@ -69,10 +69,9 @@ wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /q:false >NUL 2>
 wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /q:false >NUL 2>nul
 
 echo Configuring boot settings
-bcdedit /deletevalue useplatformclock >NUL 2>nul
+::bcdedit /deletevalue useplatformclock >NUL 2>nul
 ::bcdedit /set useplatformtick yes >NUL 2>nul
 bcdedit /set disabledynamictick yes >NUL 2>nul
-bcdedit /set bootmenupolicy Legacy >NUL 2>nul
 bcdedit /set lastknowngood yes >NUL 2>nul
 
 echo Optimizing NTFS settings
@@ -87,7 +86,7 @@ netsh interface Teredo set state servername=default >NUL 2>nul
 ::netsh int tcp set supplemental internet congestionprovider=bbr2 >NUL 2>nul
 
 echo Configuring Windows settings
-net accounts /maxpwage:unlimited
+::net accounts /maxpwage:unlimited
   
 PowerShell -NonInteractive -NoLogo -NoProfile -Command "Disable-MMAgent -mc"
 PowerShell -NonInteractive -NoLogo -NoProfile -Command "Disable-WindowsErrorReporting"

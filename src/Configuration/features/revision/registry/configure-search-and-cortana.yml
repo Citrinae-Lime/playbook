@@ -1,4 +1,4 @@
----
+﻿---
 title: configure-search-and-cortana
 description: configure-search-and-cortana
 privilege: TrustedInstaller
@@ -8,7 +8,7 @@ actions:
     # === Main ===
     # ============
     # === Add primary intranet search location - https://www.google.com/
-  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'PrimaryIntranetSearchScopeUrl', type: REG_SZ, data: 'http://www.google.com/search?q={searchTerms}'}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'PrimaryIntranetSearchScopeUrl', type: REG_SZ, data: 'http://www.google.com/search?q={searchTerms}'}
     # === Add secondary intranet search locations - https://duckduckgo.com/
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search', value: 'SecondaryIntranetSearchScopeUrl', type: REG_SZ, data: 'https://duckduckgo.com/?kae=t&q={searchTerms}'}
     # === Allow Cloud Search - User Selected

@@ -1,4 +1,4 @@
-function Update-Feature {
+﻿function Update-Feature {
     param(
         [string]$featureName,
         [bool]$bool
@@ -23,11 +23,11 @@ function Update-Feature {
 $features = @(
     @{ Name = "DirectPlay"; Bool = $true },
     @{ Name = "LegacyComponents"; Bool = $true },
-    @{ Name = "MicrosoftWindowsPowerShellV2"; Bool = $false },
+    # @{ Name = "MicrosoftWindowsPowerShellV2"; Bool = $false },
     @{ Name = "MicrosoftWindowsPowerShellV2Root"; Bool = $false },
     @{ Name = "MSRDC-Infrastructure"; Bool = $false },
-    @{ Name = "Printing-Foundation-Features"; Bool = $false },
-    @{ Name = "Printing-Foundation-InternetPrinting-Client"; Bool = $false },
+    # @{ Name = "Printing-Foundation-Features"; Bool = $false },
+    # @{ Name = "Printing-Foundation-InternetPrinting-Client"; Bool = $false },
     @{ Name = "WorkFolders-Client"; Bool = $false }
 	# @{ Name = "SmbDirect"; Bool = $false }
 )

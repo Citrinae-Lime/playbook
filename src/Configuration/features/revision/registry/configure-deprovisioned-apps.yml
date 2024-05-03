@@ -1,4 +1,4 @@
----
+﻿---
 title: configure-deprovisioned-apps
 description: Prevents some UWP packages from installing after updating Windows
 privilege: TrustedInstaller
@@ -75,7 +75,7 @@ actions:
     # -------> Calculator
   - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Deprovisioned\Microsoft.SecHealthUI_8wekyb3d8bbwe', operation: add}
     # -------> Quick Assest
-  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Deprovisioned\Microsoft.WindowsCalculator_8wekyb3d8bbwe', operation: add}
+  # - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Deprovisioned\Microsoft.WindowsCalculator_8wekyb3d8bbwe', operation: add}
     # -------> Family
   - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Deprovisioned\MicrosoftCorporationII.QuickAssist_8wekyb3d8bbwe', operation: add}
     # === Surface Hub Apps / Team edition

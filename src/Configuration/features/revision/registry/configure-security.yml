@@ -1,4 +1,4 @@
----
+﻿---
 title: configure-security
 description: configure-security
 privilege: TrustedInstaller
@@ -196,4 +196,4 @@ actions:
 
 
     # === https://learn.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-device-encryption-overview-windows-10#bitlocker-device-encryption
-  - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\BitLocker', value: 'PreventDeviceEncryption', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\BitLocker', value: 'PreventDeviceEncryption', type: REG_DWORD, data: '1'}
