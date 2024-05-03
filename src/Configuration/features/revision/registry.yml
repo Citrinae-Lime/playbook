@@ -1,11 +1,11 @@
----
+﻿---
 title: Registry
 description: Revision registry configuration
 privilege: TrustedInstaller
 actions: 
   - !writeStatus: {status: "Tweaking registry"}
   - !task: {path: 'features\revision\registry\ntlite-settings.yml'}
-  - !task: {path: 'features\revision\registry\add-take-ownership-in-context-menu.yml'}
+  # - !task: {path: 'features\revision\registry\add-take-ownership-in-context-menu.yml'}
   - !task: {path: 'features\revision\registry\bypass-requirements.yml'}
   - !task: {path: 'features\revision\registry\configure-crash-control.yml'}
   - !task: {path: 'features\revision\registry\configure-deprovisioned-apps.yml'}
@@ -41,5 +41,5 @@ actions:
   - !task: {path: 'features\revision\registry\mouse-tweaks.yml'}
   - !task: {path: 'features\revision\registry\old-rightclick-menu.yml'}
   - !task: {path: 'features\revision\registry\restore-windows-photo-viewer-all-users.yml'}
-  - !task: {path: 'features\revision\registry\revision-static-edition.yml'}
-  - !task: {path: 'features\revision\registry\revision-static-oem-information.yml'}
+  # - !task: {path: 'features\revision\registry\revision-static-edition.yml'}
+  # - !task: {path: 'features\revision\registry\revision-static-oem-information.yml'}

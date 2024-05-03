@@ -1,4 +1,4 @@
----
+﻿---
 title: configure-privacy
 description: configure-privacy
 privilege: TrustedInstaller
@@ -32,23 +32,23 @@ actions:
     # [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CloudContent]
     # "DisableWindowsConsumerFeatures"=dword:00000001
     # === Configure Windows spotlight on lock screen - Disabled
-  - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'ConfigureWindowsSpotlight', type: REG_DWORD, data: '2'}
+  # - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'ConfigureWindowsSpotlight', type: REG_DWORD, data: '2'}
     # === Include content from Enterprise spotlight - Disabled/False
-  - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'IncludeEnterpriseSpotlight', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'IncludeEnterpriseSpotlight', type: REG_DWORD, data: '0'}
     # === Do not suggest third-party content in Windows spotlight - Enabled
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableThirdPartySuggestions', type: REG_DWORD, data: '1'}
     # === Do not use diagnostic data for tailored experiences - Enabled
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableTailoredExperiencesWithDiagnosticData', type: REG_DWORD, data: '1'}
     # === Turn off all Windows spotlight features - Enabled
-  - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightFeatures', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightFeatures', type: REG_DWORD, data: '1'}
     # === Turn off the Windows Welcome Experience - Enabled
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightWindowsWelcomeExperience', type: REG_DWORD, data: '1'}
     # === Turn off Windows Spotlight on Action Center - Enabled
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightOnActionCenter', type: REG_DWORD, data: '1'}
     # === Turn off Windows Spotlight on Settings - Enabled
-  - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightOnSettings', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsSpotlightOnSettings', type: REG_DWORD, data: '1'}
     # === Turn off cloud optimized content - Enabled
-  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent', value: 'DisableCloudOptimizedContent', type: REG_DWORD, data: '1'}    
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent', value: 'DisableCloudOptimizedContent', type: REG_DWORD, data: '1'}
     # =================
     # === Messaging ===
     # =================
@@ -105,7 +105,7 @@ actions:
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\DataCollection', value: 'DisableTelemetryOptInSettingsUx', type: REG_DWORD, data: '1'}
     # === Disable pre-release features or settings - Enabled
     # ------> If you disable this policy setting, all experimentations will be turned off.
-  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\PreviewBuilds', value: 'EnableConfigFlighting', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\PreviewBuilds', value: 'EnableConfigFlighting', type: REG_DWORD, data: '0'}
     # === Do not show feedback notifications - Enabled
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\DataCollection', value: 'DoNotShowFeedbackNotifications', type: REG_DWORD, data: '1'}
     # === Limit Enhanced diagnostic data to the minimum required by Windows Analytics - Disable Windows Analytics collection
@@ -143,8 +143,6 @@ actions:
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'PreInstalledAppsEverEnabled', type: REG_DWORD, data: '0'}
     # === Pre-installed vendor apps - Off
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'OemPreInstalledAppsEnabled', type: REG_DWORD, data: '0'}
-    # === Pre-installed vendor apps - Off
-  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'OemPreInstalledAppsEnabled', type: REG_DWORD, data: '0'}
     # === Prevent Content Delivery Manager from reverting feature configuration
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'FeatureManagementEnabled', type: REG_DWORD, data: '0'}
     # === Remove Content Delivery Subcsriptions
@@ -175,10 +173,10 @@ actions:
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoPublishingWizard', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoWebServices', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform', value: 'NoGenTicket', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoOnlinePrintsWizard', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoOnlinePrintsWizard', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Messenger\Client', value: 'CEIP', type: REG_DWORD, data: '2'}
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoInternetOpenWith', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows NT\Printers', value: 'DisableHTTPPrinting', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows NT\Printers', value: 'DisableHTTPPrinting', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows NT\Printers', value: 'DisableWebPnPDownload', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\HandwritingErrorReports', value: 'PreventHandwritingErrorReports', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Windows\TabletPC', value: 'PreventHandwritingDataSharing', type: REG_DWORD, data: '1'}
@@ -186,7 +184,7 @@ actions:
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Assistance\Client\1.0', value: 'NoExplicitFeedback', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\Assistance\Client\1.0', value: 'NoImplicitFeedback', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\WindowsMovieMaker', value: 'WebHelp', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\WindowsMovieMaker', value: 'CodecDownload', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\WindowsMovieMaker', value: 'CodecDownload', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Policies\Microsoft\WindowsMovieMaker', value: 'WebPublish', type: REG_DWORD, data: '1'}
     # ============================================================
     # === Restrict Internet communication (HKEY_LOCAL_MACHINE) ===
@@ -196,27 +194,27 @@ actions:
   - !registryValue: {path: 'HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoPublishingWizard', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoWebServices', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform', value: 'NoGenTicket', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoOnlinePrintsWizard', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoOnlinePrintsWizard', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Messenger\Client', value: 'CEIP', type: REG_DWORD, data: '2'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\PCHealth\HelpSvc', value: 'Headlines', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\PCHealth\HelpSvc', value: 'MicrosoftKBSearch', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\PCHealth\ErrorReporting', value: 'DoReport', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\Windows Error Reporting', value: 'Disabled', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoInternetOpenWith', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'NoInternetOpenWith', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\Internet Connection Wizard', value: 'ExitOnMSICW', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EventViewer', value: 'MicrosoftEventVwrDisableLinks', type: REG_DWORD, data: '1'}
     # ------> Needs to be enabled for Microsoft Store to work. (31/07/2020)
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot', value: 'DisableRootAutoUpdate', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\Registration Wizard Control', value: 'NoRegistration', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\SearchCompanion', value: 'DisableContentFileUpdates', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows NT\Printers', value: 'DisableHTTPPrinting', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows NT\Printers', value: 'DisableHTTPPrinting', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows NT\Printers', value: 'DisableWebPnPDownload', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\DriverSearching', value: 'DontSearchWindowsUpdate', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate', value: 'DisableWindowsUpdateAccess', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\HandwritingErrorReports', value: 'PreventHandwritingErrorReports', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\Windows\TabletPC', value: 'PreventHandwritingDataSharing', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\WindowsMovieMaker', value: 'WebHelp', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\WindowsMovieMaker', value: 'CodecDownload', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\WindowsMovieMaker', value: 'CodecDownload', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\WindowsMovieMaker', value: 'WebPublish', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\SQMClient\Windows', value: 'CEIPEnable', type: REG_DWORD, data: '0'}
     # [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\NetworkConnectivityStatusIndicator]

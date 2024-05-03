@@ -1,4 +1,4 @@
----
+﻿---
 title: Configuration
 description: Applies some Revision configurations
 privilege: TrustedInstaller
@@ -50,11 +50,11 @@ actions:
 
   - !run: {exeDir: true, exe: "FINALIZE.cmd", weight: 200}
 
-  - !run:
-    exeDir: true
-    exe: "STARTMENU.cmd"
-    option: "remove-pinned-items-startmenu"
-    weight: 100
+  # - !run:
+  #   exeDir: true
+  #   exe: "STARTMENU.cmd"
+  #   option: "remove-pinned-items-startmenu"
+  #   weight: 100
 
   - !run:
     exeDir: true

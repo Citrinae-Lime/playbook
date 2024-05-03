@@ -1,4 +1,4 @@
----
+﻿---
 title: APPX
 description: Removal of APPX packages
 privilege: TrustedInstaller
@@ -28,7 +28,7 @@ actions:
   - !writeStatus: {status: "Removing Photos"}
   - !appx: {name: '*Microsoft.Windows.Photos*', type: family, option: "remove-appx-photos", weight: 10}
   - !writeStatus: {status: "Removing Camera"}
-  - !appx: {name: '*Microsoft.WindowsCamera*', type: family, weight: 10}
+  - !appx: {name: '*Microsoft.WindowsCamera*', type: family, option: "remove-appx-photos", weight: 10}
   
   - !writeStatus: {status: "Removing Widgets"}
   - !powerShell:
