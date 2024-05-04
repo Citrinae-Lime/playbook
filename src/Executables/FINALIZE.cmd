@@ -64,9 +64,9 @@ schtasks /change /tn "\Microsoft\Windows\UpdateOrchestrator\StartOobeAppsScanAft
 schtasks /change /tn "\Microsoft\Windows\UpdateOrchestrator\Start Oobe Expedite Work" /disable >NUL 2>nul
 schtasks /change /tn "\Microsoft\Windows\UpdateOrchestrator\Schedule Scan" /disable >NUL 2>nul
 
-wevtutil sl Microsoft-Windows-SleepStudy/Diagnostic /q:false >NUL 2>nul
-wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /q:false >NUL 2>nul
-wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /q:false >NUL 2>nul
+rem wevtutil sl Microsoft-Windows-SleepStudy/Diagnostic /q:false >NUL 2>nul
+rem wevtutil sl Microsoft-Windows-Kernel-Processor-Power/Diagnostic /q:false >NUL 2>nul
+rem wevtutil sl Microsoft-Windows-UserModePowerService/Diagnostic /q:false >NUL 2>nul
 
 echo Configuring boot settings
 ::bcdedit /deletevalue useplatformclock >NUL 2>nul
